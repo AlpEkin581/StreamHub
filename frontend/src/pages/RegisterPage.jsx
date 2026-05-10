@@ -1,19 +1,17 @@
-import { useState } from 'react';
+import { useState }import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
 
 export default function RegisterPage() {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
   const [error, setError] = useState('');
-  const { login } = useAuth();
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/auth/register', form);
-      login(data.user, data.token);
+      await register(form.username, form.email, form.password);
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.error || 'Kayıt başarısız');
@@ -38,16 +36,9 @@ export default function RegisterPage() {
           {fields.map(f => (
             <input key={f.name} type={f.type} placeholder={f.placeholder}
               value={form[f.name]} onChange={e => setForm({ ...form, [f.name]: e.target.value })}
-              required style={{
-                padding: '12px 16px', background: '#1a1a1a',
-                border: '1px solid #333', borderRadius: 8,
-                color: '#fff', fontSize: 15, outline: 'none'
-              }} />
+              required style={{ padding: '12px 16px', background: '#1a1a1a', border: '1px solid #333', borderRadius: 8, color: '#fff', fontSize: 15, outline: 'none' }} />
           ))}
-          <button type="submit" style={{
-            padding: 13, background: '#ff4444', border: 'none',
-            borderRadius: 8, color: '#fff', fontSize: 16, fontWeight: 700
-          }}>Kayıt Ol</button>
+          <button type="submit" style={{ padding: 13, background: '#ff4444', border: 'none', borderRadius: 8, color: '#fff', fontSize: 16, fontWeight: 700 }}>Kayıt Ol</button>
         </form>
       </div>
     </div>
