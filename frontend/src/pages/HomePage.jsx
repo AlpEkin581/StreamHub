@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import VideoCard from '../components/VideoCard';
-import axios from 'axios';
+import api from '../api';
 
 const CATEGORIES = ['Tümü', 'Eğitim', 'Eğlence', 'Spor', 'Müzik', 'Teknoloji', 'Oyun'];
 
@@ -11,7 +11,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const params = category !== 'Tümü' ? `?category=${category}` : '';
-    axios.get(`/api/videos${params}`)
+    api.get(`/videos${params}`)
       .then(r => setVideos(r.data))
       .finally(() => setLoading(false));
   }, [category]);
