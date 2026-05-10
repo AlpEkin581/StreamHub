@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../api';
 
 function formatDate(dateStr) {
   const date = new Date(dateStr);
@@ -21,13 +21,13 @@ export default function VideoPage() {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    axios.get(`/api/videos/${id}`).then(r => setVideo(r.data));
-    axios.get(`/api/comments/${id}`).then(r => setComments(r.data));
+    api.get(`/videos/${id}`).then(r => setVideo(r.data));
+    api.get(`/comments/${id}`).then(r => setComments(r.data));
   }, [id]);
 
   const handleLike = async () => {
     if (!user) return alert('Giriş yapman gerekiyor');
-    const { data } = await axios.post(`/api/videos/${id}/like`, {}, {
+    const { data } = await api.post(`/videos/${id}/like`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setLiked(data.liked);
@@ -37,7 +37,7 @@ export default function VideoPage() {
   const handleComment = async (e) => {
     e.preventDefault();
     if (!user) return alert('Giriş yapman gerekiyor');
-    const { data } = await axios.post(`/api/comments/${id}`, { content: comment }, {
+    const { data } = await api.post(`/comments/${id}`, { content: comment }, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setComments([{ ...data, username: user.username }, ...comments]);
