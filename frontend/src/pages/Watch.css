@@ -1,0 +1,124 @@
+.watch-page { padding: 20px 24px; max-width: 1200px; margin: 0 auto; }
+
+.video-player-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.video-player { width: 100%; height: 100%; }
+
+.watch-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.watch-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.channel-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ch-avatar, .ch-avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ch-avatar-placeholder {
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.ch-name { display: block; font-weight: 600; font-size: 15px; }
+.ch-subs { display: block; font-size: 13px; color: var(--text2); }
+
+.like-btns { display: flex; align-items: center; gap: 10px; }
+
+.like-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.like-btn:hover { border-color: var(--text2); }
+.like-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
+
+.views { font-size: 14px; color: var(--text2); }
+
+.video-desc {
+  background: var(--bg2);
+  padding: 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text2);
+  margin-bottom: 24px;
+}
+
+.comments-section h3 { margin-bottom: 16px; font-size: 16px; }
+
+.comment-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.comment-form input { flex: 1; }
+
+.comments-list { display: flex; flex-direction: column; gap: 16px; }
+
+.comment { display: flex; gap: 12px; }
+
+.comment-avatar img,
+.c-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.c-placeholder {
+  background: var(--bg3);
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.comment-user { font-size: 13px; font-weight: 600; margin-bottom: 4px; display: block; }
+.comment-text { font-size: 14px; color: var(--text2); line-height: 1.5; }
