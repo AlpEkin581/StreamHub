@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../api';
 
 const CATEGORIES = ['Eğitim', 'Eğlence', 'Spor', 'Müzik', 'Teknoloji', 'Oyun'];
 
@@ -23,7 +23,7 @@ export default function UploadPage() {
     fd.append('video', file);
     Object.entries(form).forEach(([k, v]) => fd.append(k, v));
     try {
-      const { data } = await axios.post('/api/videos', fd, {
+      const { data } = await api.post('/videos', fd, {
         headers: { Authorization: `Bearer ${token}` },
         onUploadProgress: p => setProgress(Math.round(p.loaded * 100 / p.total))
       });
